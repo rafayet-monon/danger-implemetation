@@ -38,6 +38,8 @@ blocks:
           - bundle install
           - sem-service start postgres
           - bundle exec rails db:setup
+          - sem-version node 14.6.0
+          - yarn install
       jobs:
         - name: Unit tests
           commands:
