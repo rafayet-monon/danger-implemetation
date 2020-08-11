@@ -29,7 +29,7 @@ blocks:
         - name: DANGER_GITHUB_API_TOKEN
           value: 9926865f7c79f4a4c3dbe67241c21c221c282f9c
         - name: RAILS_ENV
-          value: TEST
+          value: test
   - name: Tests
     task:
       jobs:
