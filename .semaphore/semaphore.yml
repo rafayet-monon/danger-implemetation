@@ -23,9 +23,11 @@ blocks:
       jobs:
         - name: Build
           commands:
-            - sem-version ruby 2.7.1
+            - sem-version ruby 2.6.5
             - bundle install
-            - bundle exec rake db:setup
+            - sem-service start postgres
+            - bundle exec rails db:create
+            - bundle exec rails db:migrate
   - name: Tests
     task:
       jobs:
