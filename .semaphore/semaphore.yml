@@ -1,22 +1,19 @@
 version: v1.0
-
 name: Danger Implementation
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu1804
-
 global_job_config:
   env_vars:
     - name: DANGER_GITHUB_API_TOKEN
       value: ''
     - name: RAILS_ENV
-      value: 'TEST'
+      value: TEST
   prologue:
     commands:
       - checkout
-      - export BRANCH_TAG=${SEMAPHORE_GIT_BRANCH/\//-}
-
+      - 'export BRANCH_TAG=${SEMAPHORE_GIT_BRANCH/\//-}'
 blocks:
   - name: Build
     task:
@@ -25,7 +22,14 @@ blocks:
           commands:
             - sem-version ruby 2.7.1
             - bundle install
-            - bundle exec rake db:setup
+            - 'bundle exec rake db:setup'
+      env_vars:
+        - name: RAILS_MASTER_KEY
+          value: c13b0313a67a3d6a805dbc930a388c8c
+        - name: DANGER_GITHUB_API_TOKEN
+          value: 9926865f7c79f4a4c3dbe67241c21c221c282f9c
+        - name: RAILS_ENV
+          value: TEST
   - name: Tests
     task:
       jobs:
