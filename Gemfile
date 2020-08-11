@@ -59,6 +59,7 @@ group :development, :test do
   gem 'danger-simplecov_json' # Report code coverage in danger
   gem 'danger-slim_lint' # Lint slim files
   gem 'danger-suggester' # Suggest code changes based on configured code
+  gem 'scss_lint'
 end
 
 group :test do
