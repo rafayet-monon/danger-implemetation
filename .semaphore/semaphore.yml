@@ -32,6 +32,12 @@ blocks:
             - bundle exec rails db:migrate
   - name: Tests
     task:
+      prologue:
+        commands:
+          - sem-version ruby 2.6.5
+          - bundle install
+          - sem-service start postgres
+          - bundle exec rails db:setup
       jobs:
         - name: Unit tests
           commands:
